@@ -1,11 +1,10 @@
 group 'com.nongfenqi.nexus.plugin'
 version '1.1.1'
 
-
+apply plugin: "io.github.goooler.osgi"
 apply plugin: 'java'
 sourceCompatibility = 1.8
 
-apply plugin: 'osgi'
 apply plugin: 'com.github.lburgazzoli.karaf'
 
 buildscript {
@@ -15,7 +14,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath "gradle.plugin.com.github.lburgazzoli:gradle-karaf-plugin:0.0.47"
+        classpath "gradle.plugin.com.github.lburgazzoli:gradle-karaf-plugin:0.5.6"
+        classpath "io.github.goooler.osgi:gradle-legacy-osgi-plugin:0.8.2"
     }
 }
 repositories {
@@ -23,11 +23,11 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
     compileOnly group: 'org.sonatype.nexus', name: 'nexus-plugin-api', version: '3.49.0-02'
     compileOnly group: 'org.sonatype.nexus', name: 'nexus-repository', version: '3.49.0-02'
     compileOnly group: 'org.sonatype.nexus', name: 'nexus-rest', version: '3.49.0-02'
-    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
 }
 
 jar {
